@@ -1,0 +1,239 @@
+
+  字典 ---> 键值的数据对，类似 javascript 中的对象
+
+	字典声明,键不能重复
+	var a = ["key":"Vaule"]
+	var a: [String : String] = ["key", "Vaule"] // 键为字符串，值为字符串的字典
+	var a: [String : Int] = ["key", 1] //键为字符串，值为 Int 型的字典
+	var b: Dictionary<String, String> = ["key": "Vaule"]
+
+	
+	空字典
+	var a: [String : Int] = [:]
+	var a: Dictionary<String, Int>  = [:]
+	var a = [String : String]()
+	var a = Dictionary<Int, Int>()
+
+
+	取值 ----> 通过键 取值, 返回的是可选型
+	a["key"]
+	if let val = a["key"] {
+    	    print(val)
+	}
+
+	字典长度
+	a.count
+
+	是否为空
+	a.isEmpty
+
+	获取字典的所有key --> 所获取的顺序是不一致的
+	Array(a.keys)
+
+	获取字典的所有值
+	Array(a.values)
+
+
+	遍历
+	for (key, val) in a{
+	    print("\(key) : \(val)")
+	}
+
+	比较
+	var a = [1:1, 2:2, 3:3]
+	var b = [1:1, 3:3, 2:2,]
+
+	a == b //true 
+	字典是无序的
+
+
+	
+	字典添加
+	a["key1"] = "str"
+	a.updateValue("str2", forKey: "key2")
+
+	字典修改
+	a["key"] = "12344"
+	a.updateValue("imooc", forKey: "key")// 这里返回值是上一次的值
+
+
+	字典删除
+	a["key2"] = nil
+	a.removeValue(forKey: "key1") //会返回删除掉的值
+	if let val = a.removeValue(forKey: "key1"){
+	    print("key为：\(val)的字典向删除成功")
+	}
+
+
+
+  集合 ----> 无序的数据集,集合的值不能重复，会自动清除相同值
+
+	声明集合
+	var a: Set<String> = ["A", "B"] // 字符串类型的集合
+	var d = Set(["A", "B", "C"])
+
+	空集合
+	var b: Set<Int> = []
+	var c = Set<Double>()
+
+	获取集合长度
+	a.count
+
+	是否为空
+	a.isEmpty
+
+	判断集合中是否有该元素
+	a.contains("A")
+
+	遍历
+	for str in a{
+    	    print(str)
+	}
+	
+	集合对比
+	var a: Set = [1,2,3]
+	var b: Set = [3,2,1]
+	a == b //true
+
+
+
+
+	集合添加
+	a.insert("C")
+
+
+	集合修改
+	   集合不能修改
+
+	集合删除
+	a.remove("C")
+	if let c = a.remove("C"){
+    	    print("删除\(c) 成功！")
+	}
+
+	a.removeAll() //删除所有
+
+
+	
+	并集 ---> 相加， union
+
+	var a: Set = ["A", "B", "C"]
+	var b: Set = ["A", "X", "Y", "Z"]
+
+	var c = a.union(b) // a + b 
+
+	a.union(["D", "E"]) //这样也是可以的
+
+
+
+	交集 ---> 都有的元素 , intersection
+	var a: Set = ["A", "B", "C"]
+	var b: Set = ["A", "X", "Y", "Z"]
+	a.intersection(b) // "A"
+
+	
+	差集： subtracting
+	var a: Set = ["A", "B", "C"]
+	var b: Set = ["A", "X", "Y", "Z"]
+	a.subtracting(b) // ["B", "C"] ： a-b 值为 a 减去 a 和 b 共有的值，剩余 b 没有的值
+
+	
+	亦或： 2个集合中只出现了一次的操作，相当于去除交集, symmetricDifference
+	var a: Set = ["A", "B", "C"]
+	var b: Set = ["A", "X", "Y", "Z"]
+	a.symmetricDifference(b) // ["X", "B", "C", "Z", "Y"] 去除了交集元素 "A"
+
+
+	判断是否是子集
+	var a: Set = ["A"]
+	var b: Set = ["A", "X", "Y", "Z"]
+	// 判断 a 是否是 b 的子集
+	a.isSubset(of: b) //true 相反，b 是 a 的超级
+
+	
+	判断真子集
+	var a: Set = ["A"]
+	var b: Set = ["A", "X", "Y", "Z"]
+	// 判断 a 是否是 b 的真子集
+	a.isStrictSubset(of: b) //true 相反，b 是 a 的真超级
+
+
+	判断超集
+	var a: Set = ["A"]
+	var b: Set = ["A", "X", "Y", "Z"]
+	//判断 b 是否是 a 的超集
+	b.isSuperset(of: a) // true
+
+	判断真超集
+	var a: Set = ["A"]
+	var b: Set = ["A", "X", "Y", "Z"]
+	//判断 b 是否是 a 的真超集
+	b.isStrictSuperset(of: a) //true
+
+
+
+	判断集合是否相离 ：就是没有公共元素
+	var a: Set = ["A", "B", "C"]
+	var b: Set = ["X", "Y", "Z"]
+	a.isDisjoint(with: b) //true ,a 和 b 没有公共元素
+
+
+
+
+  选择合适的数据结构：
+	数组： 有序
+	集合： 无序、唯一性，提供了集合操作，快速查找
+	字典: 键-值数据对
+
+
+
+  在看 for in 循环
+ 
+	var a = ["A","B"]
+	var b = ["key":"val"]
+	可迭代的数据类型，例如：
+		"hello".characters
+		a.enumerated()
+		b.keys // print(b.keys)
+
+
+
+
+
+		
+	
+	
+
+	
+	
+
+
+
+
+
+
+
+	
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

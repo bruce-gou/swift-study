@@ -1,0 +1,30 @@
+var a = ["A","B"]
+a.removeAll(keepingCapacity: <#T##Bool#>) // keepingCapacity
+keepingCapacity: 默认 false, 清空数组，删除数组容量， true: 保存数组容量
+a.capacity // 2 数组容量
+
+
+
+a.replaceSubrange(<#T##subrange: Range<Int>##Range<Int>#>, with: <#T##Collection#>)
+
+
+
+
+var a = ["A":"B"]
+a.prefix(upTo: <#T##Dictionary<String, String>.Index#>)
+a.prefix(through: <#T##Dictionary<String, String>.Index#>)
+
+
+
+
+
+
+var a:Set = ["A","B"]
+a.insert(<#T##newMember: Hashable##Hashable#>)
+a.union(<#T##other: Sequence##Sequence#>)
+a.prefix(through: <#T##Set<String>.Index#>)
+
+
+
+
+

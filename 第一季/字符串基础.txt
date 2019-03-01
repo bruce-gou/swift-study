@@ -1,0 +1,249 @@
+
+文本多行输出：
+var str = """
+Hello,
+playground，
+café
+"""
+
+
+var str: String = "hello, swift"
+let str2: = String("hello, swift")
+
+var str = ""
+var str2 = String()
+
+检查是否为空： str.isEmpty
+
+
+str += "!!!"
+
+let name = "zs"
+
+let age = 18
+
+let height = 1.78
+
+字符串插值：
+    let s = "My name is \(name). I \(age) years old. I'm \(height) meters tall."
+反斜杠
+print("\\")
+双引号
+print("\"")
+制表符
+print("\t")
+换行
+print("\n")
+
+
+
+
+
+字符串遍历
+var str = "hello, swift"
+
+for i in str{
+    print(i)
+}
+获取字符串长度： str.count
+
+声明字符：字符也是双引号，字符也可以存中文
+
+	let str2: Character = "!"
+	let str3: Character = "名"
+
+字符串和字符不能直接相加，需要类型转换：
+
+	str + String(str2)
+
+	或者
+
+	str.append(str2)
+
+
+
+字符不能使用其他语言中 str[0] 这种方式取值的
+
+swift 中根据 索引取值方法：
+	var str = " Hello,playground,café "
+	取第一个字符： 
+		str[str.startIndex]
+
+	获取字符的下一个字符
+		str[str.index(after: str.startIndex)]
+
+	取第10个字符串
+		var a = str.index(str.startIndex, offsetBy: 10)
+		str[a]
+	
+	
+	取 4 - 7个字符串，下标从0开始
+		var a = str.index(str.startIndex, offsetBy: 4)
+		var b = str.index(str.startIndex, offsetBy: 8)
+		str[a...b]
+
+	取前 10 个字符串
+		str.prefix(11)
+		
+		或者
+
+		var a = str.index(str.startIndex, offsetBy: 0)
+		var b = str.index(str.startIndex, offsetBy: 11)
+		str[a...b]
+
+
+	取倒第10个字符串
+		str.suffix(10)
+
+		或者
+
+		var c = str.index(str.endIndex, offsetBy: -10)
+		str[c..<str.endIndex]
+
+
+	取倒数第10个字符串
+		var a = str.index(str.endIndex, offsetBy: -10)
+		str[a]
+
+
+	取最后一个字符串
+		var a = str.index(str.endIndex, offsetBy: -1)
+		str[a..<str.endIndex]
+	
+		或者
+
+		str[str.index(before: str.endIndex)]
+		
+	获取字符的上一个字符
+		str[str.index(before: str.endIndex)]	
+		// str.endIndex 获取的到索引是超出最后一个了，所以上一个就是最后一个字符
+
+	字符串替换 
+		str.replacingOccurrences(of: "ell", with: "124")
+
+	指定位置替换字符串
+		// 替换 0 到 1 的字符
+		str.replaceSubrange(str.startIndex...str.index(after: str.startIndex), with: "AA")
+
+		//替换 0 到 3 的字符串
+		str.replaceSubrange(str.startIndex...str.index(str.startIndex, offsetBy: 3), with: "AAA")
+	
+
+	字符串切割
+		print(str.components(separatedBy: ",")) // 以逗号分割
+
+	拼接
+		let a = ["1", "2", "3"]
+		print("拼接:", a.joined(separator: "-")) //拼接: 1-2-3
+
+	去掉首尾空格
+		print("去掉空格:", str.trimmingCharacters(in: .whitespaces))
+
+
+	将字母全部转化成大写
+		str.uppercased()
+
+	将字母全部转成小写
+		str.lowercased()
+
+	将字符串首字母大写
+		str.capitalized
+
+	检查字符串前缀
+		if str.hasPrefix("Hello"){}
+		str.starts(with: "hEllo")
+
+	检查字符串是否是他的子串
+		str.contains("llo")
+
+	检查字符后缀
+		if str.hasSuffix("café "){}
+
+	追加字符串:在字符串最后追加
+		str.append(".com")
+
+	在指定位置插入字符： 是字符 不是字符串
+		str.insert("A", at: str.startIndex)
+
+		或者
+
+		str.insert("A", at: str.index(str.startIndex, offsetBy: 5))
+		
+	在指定位置插入字符串
+		str.insert(contentsOf: "1234", at: str.startIndex)
+		
+		或者
+
+		str.insert(contentsOf: "1234", at: str.index(str.startIndex, offsetBy: 5))
+
+		或者
+		
+		str.insert(contentsOf: ["1","2"], at: str.index(str.startIndex, offsetBy: 5))
+
+	删除指定范围的字符串
+		// 删除 0 - 1 的字符
+		str.removeSubrange(str.startIndex...str.index(after: str.startIndex))
+
+		// 删除 0 - 3 的字符串
+		str.removeSubrange(str.startIndex...str.index(str.startIndex, offsetBy: 3))
+
+	删除第一个字符
+		str.dropFirst()
+
+	字符串反转
+		String(str.reversed())
+
+NSString 库
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

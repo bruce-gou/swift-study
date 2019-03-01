@@ -1,0 +1,130 @@
+数组是有序的数据集合
+数组中元素类型要一致,声明数组要制定类型
+	var a = [1,2,3,4,5]
+	var b = ["A", "B", "C"] //字符串数组 而非字符数组
+    显示声明：
+	var a: [Int] = [1,2,3,4,5]
+	var b: [Character] = ["A", "B", "C"] // 字符数组
+
+	或者
+	var a: Array<Int> = [1,2,3,4,5]
+
+	空数组
+	var a:[Int] = []
+	var a: Array<Int> = []
+	var a = [Int]()
+
+	指定长度数组
+	var b = [Int](repeating:0, count: 5) // repeating:初始值，count: 数组长度
+	var c = Array<Int>(repeating:0, count: 5)
+
+	获取数组长度
+	a.count
+
+	数组是否为空
+	a.isEmpty
+
+	获取第一个元素
+	a.first //是可选型
+	if let first = a.first{
+	    print("a数组第一个值为：\(first)")
+	}
+
+	获取最后一个元素
+	a.last //是可选型
+
+	获取数组最小值
+	a.min()
+
+	获取数组最大值
+	a.max()
+
+	获取指定范围的子数组
+	a[2...3]
+	a[2..<4]
+	a[...3]
+	a[3...]
+
+	数组中是否包含某个值
+	a.contains(2) // true
+
+	查看某个元素在数组中的索引
+	b.index(of: "B")
+
+	排序
+	arr.sort() // 会改变 arr 
+	arr.sorted() //不会改变arr ，返回一个排了序的数组
+
+	遍历
+	for index in 0..<a.count{
+	   a[index]
+	}
+
+	for number in a{
+	   print(number)
+	}
+
+	for (i, number) in a.enumerated(){
+	    print("\(i+1): \(number)")
+	}
+
+	
+	
+	数组添加元素
+	a.append(6)
+	a += [7]
+	a.insert(8, at: 0) //在索引为0的位置，插入元素8，
+
+	数组删除元素
+	a.remove(at: 0) //删除索引为0 的元素
+	a.removeFirst() //删除第一个元素-》可选型
+	a.lastFirst()	//删除最后一个元素 -〉 可选型
+	a.removeSubrange(0...3) // 删除索引0 - 3 范围的数组
+	a.removeAll() //删除所有
+
+	a.popLast() //删除最后一个值，但是数组为空时，不做操作
+
+	数组元素修改
+	a[0] = 10
+	a[0...2] = [8,9,7] //一个范围修改
+
+	字典是可以比较的
+	a == b
+
+  二维数组
+	4种方式是一样的
+	var a = [ [1,2,3], [4, 5, 6 ]]
+	var b:[[Int]] = [ [1,2,3], [4, 5, 6 ]]
+	var c:[Array<Int>] = [ [1,2,3], [4, 5, 6 ]]
+	var d:Array<Array<Int>> = [ [1,2,3], [4, 5, 6 ]]
+
+	
+	a[0]	a[0][0]		a.count		a[0].count
+
+	a[0].append(8)	 a.append([0,0,0,0]) 	a += [[1,2,3,4]]
+
+	
+  NSArray: 可以装不同类型的数据元素
+
+	var a:NSArray = []
+	var b = [1,2,3,4] as NSArray
+	var c: NSArray = [1, "A", 3]
+
+
+	
+	
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+	

@@ -1,0 +1,245 @@
+
+	func sayHello( name: String ) -> String{//箭头后面的String 表示返回值类型
+		return "Hello " + name
+	}
+	sayHello(name:"张三")
+
+	func sayHello( name: String ) -> Void{//也可以这样表示没有返回值
+   		"Hello " + name
+	}
+
+	func sayHello( name: String ) ->(){//也可以这样表示没有返回值
+   		"Hello " + name
+	}
+
+
+	返回元组值
+	func sayHello() -> (age: Int, name: String){
+   		let age = 18
+    		let name = "张三"
+    		return (age, name)
+	}
+	var data = sayHello()
+	print("\(data.name) 今年\(data.age)岁了")
+
+
+外部参数：为了参数的识别度高，可以使用外部参数方式
+	func sayHello(name: String, number age: Int) -> (){
+   		print("\(name) 今年 \(age)岁了")
+	}
+	sayHello(name: "张三", number: 18)// 上面 number 参数命在调用的时候使用,而在函数内部，可以正常使用 age 参数命
+
+	//也可以项下吗 参数前 加 "_" ，在调用函数时候，就可以省略外部参数名，
+	func sayHello(_ name: String, _ age: Int) -> (){
+   		print("\(name) 今年 \(age)岁了")
+	}
+	sayHello("张三", 18)
+
+
+
+  
+	
+  默认值参数,参数可以给默认值
+	  func sayHello(name:String, greeting: String = "你好啊！") ->(){
+    		print("\(name) \(greeting)")
+	  }
+	  sayHello(name: "李四")
+	  sayHello(name: "李四", greeting: "？")
+
+
+变长的参数类型：一个函数只能存在一个 变长的参数类型
+	func mean(_ numbers: Double ... ) -> Double{
+	    var sum: Double = 0
+	    for number in numbers{
+		sum += number
+    	    }
+    	    return sum / Double(numbers.count)
+	}
+	mean(1, 2 ,3,4)
+
+
+
+
+常量参数、变量参数 和 inout 参数
+	swift 默认的函数中每一个参数 是常量式的参数
+	// 把整型数字转成二进制 字符串
+	func toBinary(num: Int) -> String{
+	    var num1 = num
+    	    var res = ""
+    	    repeat{
+        	res = String(num1 % 2) + res
+        	num1 /= 2
+    	    }while num1 != 0
+    	    return res
+	}
+	toBinary(num: 10)
+
+	//可变型参数
+	func swapTwoInts(_ a: inout Int, _ b: inout Int) -> (){
+    	    let t = a
+    	    a = b
+    	    b = t
+	}
+	var x = 10
+	var y = 20
+	swapTwoInts(&x, &y)
+	x // 20 
+	y // 10
+
+
+
+  函数可以当作变量
+	func add(_ a: Int, _ b: Int) -> Int{
+    	    return a + b
+	}
+	let anotherAdd = add
+	anotherAdd(2,30)
+
+	或者
+	let anotherAdd:(Int, Int)->Int = add
+	anotherAdd(2,30)
+
+
+	空的参数和 空的返回值
+	let anotherAdd:()-> () = add
+	let anotherAdd:()-> Void = add
+	let anotherAdd: Void-> Void = add
+
+
+	数组排序
+	var arr:[Int] = []
+	for _ in 0...100{
+    		arr.append(Int(arc4random()%1000))
+	}
+	func bigger(_ a: Int, _ b: Int) -> Bool{
+    		return a > b
+	}
+	//如下这3种排序方法 都是一样的，从小到大排序
+	arr.sorted(by: bigger)
+	arr.sorted(by: {(a: Int, b: Int) -> Bool in return a > b})
+	arr.sorted(by: {$0 > $1})
+
+
+
+
+
+  函数式编程
+
+	var arr:[Int] = []
+	for _ in 0...100{
+    	    arr.append(Int(arc4random()%150))
+	}
+	func base( _ data: inout [Int], _ fun: (Int)->Int){
+    	    for (index,number) in data.enumerated(){
+        	data[index] = fun(number)
+    	    }
+	}
+	//计算百分制度的成绩
+	func one(number: Int)->Int{
+    	    return Int(Double(number) / 150 * 100)
+	}
+	base( &arr, one)
+
+
+	把遍历那一步分离出来 成 base，one 函数只是做计算百分制操作，把one 函数传入base 参数中作为一个参数
+
+  map方法：
+	arr.map(one) //也是一样操作
+	arr.map{
+    	    return Int(Double($0) / 150 * 100)
+	}
+
+
+
+  filter方法:
+	func isPass(number: Int) -> Bool{
+    	    return number >= 60
+	}
+	arr.filter(isPass) //过滤 把大于 60 的数据返回
+	arr.filter{
+    	    return $0 >= 60
+	}
+
+  
+
+
+  reduce方法:
+	reduce：把数组所有数据加起来
+	func add(a :Int, b: Int) -> Int{
+    	    return a + b
+	}
+	arr.reduce(0, add)
+	arr.reduce(0, +)
+	arr.reduce(0, {(x, y) -> Int in return x+y})
+	arr.reduce(0, {
+    		return $0 + $1
+	})
+	var c = arr.reduce(0, {
+    	    x,y in return x + y
+	})
+	//以上5种方法相同
+
+
+
+	返回函数类型和 函数嵌套
+	    函数也是可以作为返回的值的
+		
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+
+
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

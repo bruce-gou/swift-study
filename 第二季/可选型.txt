@@ -1,0 +1,112 @@
+
+ 可选型 
+	必须显式的声明 在其他类型后面加 "?" ，然后变成，比如 Int ，就变成 整型可选型，可以赋值 整型数据，也可赋值 可选型(nil)
+	
+	例如：
+	    var errorCode: String? = "404";
+	    
+
+  解包： 可选型 必须要解包才能使用
+
+	强制解包：变量后面加 "!" ，强制解包有风险
+		var s = "errorCode is" + errorCode!
+
+	正常解包：
+		
+		if let unwrappedErrorCode = errorCode{
+    		    print("errorCode is: " + unwrappedErrorCode)
+		}
+		// 可解包多个， 例如 ：可使用 where
+		if let a = a, b = b{
+			//
+		}
+
+
+	
+   更多用法：
+     	下面3个方法 都是 通过 可选型 取值，做的操作，效果目的都是一样的，方法三更简洁实用。
+
+	方法一：
+	    var errorMessage: String? = nil
+		let message: String
+	    if let errorMessage = errorMessage{
+		message = errorMessage
+	    }else{
+		message = "No Error"
+	    }
+
+	方法二：
+	    let message2 = errorMessage == nil ? "No Error" : errorMessage
+
+	方法三：当  errorMessage 的值真的为 nil 则返回 "No Error" ，否则返回值
+	    let message3 = errorMessage ?? "No Error" 
+
+
+
+  元组中应用
+	//在这里 error1 不是可选型，是他的分量 errorMessage 是可选型
+	var error1: (errorCode: Int, errorMessage: String?) = (404, "Not found")
+	error1.errorMessage = nil
+	
+	//在这里元组 error2 是可选型，分量不是可选型
+	var error2: (errorCode: Int, errorMessage: String)? = (404, "Not found")
+	error2 = nil
+
+	//在这里 元组 error3 和分量 errorMessage 都是可选型，都可以设置为 nil
+	var error3: (errorCode: Int, errorMessage: String?)? = (404, "Not found")
+	error3 = nil
+	error3.errorMessage = nil
+
+
+  可选型的实际应用
+	
+	例1:
+	    var s = "xyz"
+	    var age = Int(s) //这里age 值为 nil, 类型为 Int? ,因为"xyz"不能转成整型
+
+
+	    var s1 = "16"
+	    var age = Int(s1) // 16 这样是可以转换的
+
+		
+
+	    if let age = Int(s1){
+		print("you're a teenager!")
+	    }else{
+		print("No Error")
+	    }
+
+
+
+
+  隐式可选型: 
+	在使用的时候可以不进行解包，在类型后面加 "!"，很危险，在没有值的时候，可能会报错，所以使用的时候要确保它一定有值
+	var errorMessage: String! = nil
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+	

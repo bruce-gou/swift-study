@@ -1,0 +1,90 @@
+
+赋值运算符：
+	var a = 3
+	a = 4
+
+	a + b	a - b	a * b	a / b	a % b
+
+	+a	-b
+
+	a += 2	a -= 2	a *= 2	a /= 2	a %= 2
+
+
+	var a = 10, b = 3
+	a / 3 = 3 // 如果要获取浮点型的值需要对2个值进行转换
+	Double(a) / Double(b) // 3.333333333
+
+	+a // 10
+	-a // -10
+
+
+比较运算符
+	a == b	a != b	a > b	a >= b	a < b	a <= b
+
+	a === b		a !== b
+
+逻辑运算符
+	!a	a && b		a || b
+
+三目运算符
+	true ? "str1" : "str2"
+
+
+区间运算符 和 for-in
+
+	a...b:	1...10
+	a..<b:	1..<10
+
+	var b = 1...5
+	for i in b{
+    		print(i) // 1,2,3,4,5
+	}
+	
+	var b = 1..<5
+	for i in b{
+    		print(i) // 1,2,3,4
+	}
+	
+    where 控制条件
+	for i in 1...5 where i > 4{
+	    print(i) // 5
+	}
+	
+	for i in 1...5 where i > 3 && i < 5{
+	    print(i) //4
+	 }
+
+	for case let i in 1...5 where i > 3 && i < 5{
+	    print(i)
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+
+闭包 跟函数是一样的
+var arr: [Int] = []
+for _ in 0...20{
+    arr.append(Int(arc4random() % 100 ))
+}
+	
+	闭包：
+		arr.sort({(a: Int, b: Int) -> Bool in
+			// 逻辑代码
+			return a > b
+		})
+		这个就是闭包，匿名函数
+	
+	简化语法
+		arr.sort(by: {a, b in return a > b})
+		arr.sort(by: {a, b in a > b})
+		arr.sort(by: {$0 > $1})
+		arr.sort(by: > )
+
+	
+
+	例子：
+	  写一个方法，记录每天用的钱
+	  func count() -> (Int) -> Int{
+    		var money = 0
+    		return {
+        		x in
+        		money += x
+        		return money
+    		}
+	  }
+	  var back = count()
+	  back(2000)
+	  back(3000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
